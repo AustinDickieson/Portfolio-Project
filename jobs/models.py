@@ -7,4 +7,4 @@ class Job(models.Model): #creates class that allows object saved inside db
     #uploads all images to images folder
     summary = models.CharField(max_length=300) #job description
 
-#migrations update databases to include new models    
+#migrations update databases to include new models

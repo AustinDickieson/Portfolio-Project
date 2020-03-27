@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 #Tell Django when new app is created
 INSTALLED_APPS = [
+    'blog.apps.BlogConfig',
     'jobs.apps.JobsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
