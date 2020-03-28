@@ -8,6 +8,15 @@ class Blog(models.Model):
     body = models.TextField()
     image = models.ImageField(upload_to='images/')
 
+    def __str__(self):
+        return self.title #makes admin title the title of the blog
+
+    def summary(self):
+        return self.body[:100] #returns first 100 characters of the body
+
+    def pub_date_clean(self):
+        return self.pub_date.strftime('%d %B %Y') #python strftime reference website
+
 
 
 

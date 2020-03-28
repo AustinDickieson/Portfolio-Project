@@ -1,17 +1,14 @@
 <!doctype html>
 <html lang="en">
 
-
-
   <head>
     {% load staticfiles %} <!-- loading photo and resume as statics -->
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>Austin Dickieson</title>
+    <title>Austin's Blog</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/">
 
@@ -59,45 +56,33 @@
         <div class="navbar-nav ml-auto"><!-- ml auto shifts to right side-->
           <a class="nav-item nav-link" href="https://www.linkedin.com/in/austin-dickieson/">LinkedIn</a>
           <a class="nav-item nav-link" href="{% static 'Resume.pdf' %}">Resume</a>
-          <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+          <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
         </div>
       </div>
     </nav>
 </header>
 
 <main role="main">
-<!-- Jumbotron-->
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1>Austin Dickieson</h1>
-      <p class="lead text-muted">I'm a junior at Santa Clara University and I am studying Information System, Computer Science and Art. I hope to work for a company that is improving our environment because I love wildlife and the outdoors.</p>
-      <p>
-        <a href="mailto:adickieson@scu.edu" class="btn btn-primary my-2">Email Me</a>
-      </p>
-      <img src="{% static 'Profile2.jpg'%}" height="300"/> <!-- added profile pic-->
-    </div>
-  </section>
+  <div class="container"> <!--puts code in margins on page-->
 
+  <h1 class = "text-center pt-3">Welcome to Austin's Blog</h1> <!--centered and padded heading-->
+  <br />
+  <br />
+  <h2> Latest Posts </h2>
+  <hr /> <!--adds thin grey line break-->
 
-    <div class="container">
-<!-- Start of the jobs-->
-      <div class="row">
+  {% for blog in blogs.all %}
 
-<!-- For loop to display all jobs from  db-->
-        {% for job in jobs.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src= "{{ job.image.url }}"/>
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p> <!-- Job text variable name from job.models-->
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-
-      </div>
-    </div>
-
+    <a href ="{% url 'detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
+    <!-- linking the blog title to the detail, found in views.py-->
+    {{ blog.pub_date_clean }}
+    <!-- use blog.pub_date_clean to show only smaller date-->
+    <br />
+    <img class="image-fluid" src= "{{ blog.image.url }}" height =200 width=200/><!-- image fluid from bootstrap-->
+    <p>{{ blog.summary }}</p> <!-- Job text variable name from job.models,-->
+    <!-- use blog.summary to show only first 100 char -->
+  {% endfor %}
+  </div>
 </main>
 
 <footer class="text-muted">
