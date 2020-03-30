@@ -137,3 +137,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 #Where to access image
 MEDIA_URL = '/media/'
 #to access image it would be website/media/images/...
+
+#import all info from local_settings unless there is an error
+try:
+    from local_settings import *
+except ImportError:
+    pass
