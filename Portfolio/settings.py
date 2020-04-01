@@ -124,7 +124,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 STATICFILES_DIRS = [ #where to look for status files
-    os.path.join(BASE_DIR, 'portfolio/static')
+    os.path.join(BASE_DIR, 'Portfolio/static'),
 ]
 
 STATIC_URL = '/static/'
@@ -141,6 +141,6 @@ MEDIA_URL = '/media/'
 #import all info from local_settings unless there is an error
 #"local support"
 try:
-    from local_settings import *
+    from .local_settings import *
 except ImportError:
     pass
